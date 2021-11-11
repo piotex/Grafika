@@ -59,6 +59,7 @@
     <Compile Include="Assets\Modules\main_script.cs" />
     <Compile Include="Assets\MouseLook.cs" />
     <Compile Include="Assets\PlayerMovement.cs" />
+    <Compile Include="Assets\AnimationScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

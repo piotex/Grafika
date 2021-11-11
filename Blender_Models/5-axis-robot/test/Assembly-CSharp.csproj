@@ -57,6 +57,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Modules\main_script.cs" />
+    <Compile Include="Assets\MouseLook.cs" />
+    <Compile Include="Assets\PlayerMovement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

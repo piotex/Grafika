@@ -24,13 +24,28 @@ public class JointManager : MonoBehaviour
             if (GetDistance(m_end.transform.position, m_target.transform.position) > m_threshold)
             {
                 Joint current = m_root;
-                while (current != null)
+                while (current != m_end)
                 {
                     float slope = CalculateSlope(current);
-                    current.Rotate(-slope * m_rate);
+                    RotateJoint(ref current, slope);
                     current = current.GetChild();
                 }
             }
+        }
+    }
+    void RotateJoint(ref Joint current, float angle)
+    {
+        float max_pos_rotation = 60;
+        float max_neg_rotation = -60;
+
+        float currentRotation = current.GetRotation().y;
+        //if (currentRotation < max_pos_rotation && currentRotation > max_neg_rotation )
+        //if (currentRotation < max_pos_rotation )
+        {
+            Debug.Log(current.GetName() + "_x: " + current.GetRotation().x);
+            Debug.Log(current.GetName() + "_y: " + current.GetRotation().y);
+            Debug.Log(current.GetName() + "_z: " + current.GetRotation().z);
+            current.Rotate(-angle * m_rate);
         }
     }
 

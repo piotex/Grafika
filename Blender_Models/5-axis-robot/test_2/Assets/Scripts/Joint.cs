@@ -13,4 +13,13 @@ public class Joint : MonoBehaviour
     {
         transform.Rotate(Vector3.up * _angle);
     }
+    public Vector3 GetRotation()
+    {
+        
+        return transform.eulerAngles;
+    }
+    public string GetName()
+    {
+        return transform.name;
+    }
 }

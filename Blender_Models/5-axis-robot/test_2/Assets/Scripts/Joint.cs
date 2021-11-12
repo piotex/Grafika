@@ -13,10 +13,24 @@ public class Joint : MonoBehaviour
     {
         transform.Rotate(new Vector3(0,0,1) * _angle);
     }
-    public Vector3 GetRotation()
+    public float GetCriticAxisRotation()
     {
-        
-        return transform.eulerAngles;
+        switch (transform.name)
+        {
+            case "1":
+                return transform.localEulerAngles.z;
+            case "2":
+                return transform.localEulerAngles.y;
+            case "3":
+                return transform.localEulerAngles.z;
+            case "4":
+                return transform.localEulerAngles.z;
+            case "5":
+                return transform.localEulerAngles.z;
+            default:
+                return transform.localEulerAngles.z;
+        }
+        return 0;
     }
     public string GetName()
     {

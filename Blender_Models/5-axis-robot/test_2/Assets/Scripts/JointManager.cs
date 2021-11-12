@@ -32,7 +32,7 @@ public class JointManager : MonoBehaviour
             if (GetDistance(m_end.transform.position, m_target.transform.position) > m_threshold)
             {
                 Joint current = m_root;
-                while (current != m_end)
+                while (current != null)
                 {
                     float slope = CalculateSlope(current);
                     RotateJoint(ref current, slope);
@@ -43,16 +43,16 @@ public class JointManager : MonoBehaviour
                             Text_Z_rotation_J1.text = "J" + current.GetName() + "-Z: " + current.transform.localEulerAngles.z.ToString("0.00");
                             break;
                         case "2":
-                            Text_Z_rotation_J2.text = "J" + current.GetName() + "-Y: " + current.transform.localEulerAngles.y.ToString("0.00");
+                            Text_Z_rotation_J2.text = "J" + current.GetName() + "-Y: -" + current.transform.localEulerAngles.y.ToString("0.00");
                             break;
                         case "3":
-                            Text_Z_rotation_J3.text = "J" + current.GetName() + "-Y: " + current.transform.localEulerAngles.y.ToString("0.00");
+                            Text_Z_rotation_J3.text = "J" + current.GetName() + "-Z: " + current.transform.localEulerAngles.z.ToString("0.00");
                             break;
                         case "4":
-                            Text_Z_rotation_J4.text = "J" + current.GetName() + "-Y: " + current.transform.localEulerAngles.y.ToString("0.00");
+                            Text_Z_rotation_J4.text = "J" + current.GetName() + "-Z: " + current.transform.localEulerAngles.z.ToString("0.00");
                             break;
                         case "5":
-                            Text_Z_rotation_J5.text = "J" + current.GetName() + "-Y: " + current.transform.localEulerAngles.y.ToString("0.00");
+                            Text_Z_rotation_J5.text = "J" + current.GetName() + "-Z: " + current.transform.localEulerAngles.z.ToString("0.00");
                             break;
                         default:
                             Text_Z_rotation_J0.text = "J" + current.GetName() + "-Y: " + current.transform.localEulerAngles.y.ToString("0.00");
@@ -69,14 +69,17 @@ public class JointManager : MonoBehaviour
         float max_pos_rotation = 60;
         float max_neg_rotation = -60;
 
-        float currentRotation = current.GetRotation().y;
+        //current.Rotate(-angle * m_rate);
+        float currentRotation = current.GetCriticAxisRotation();
         //if (currentRotation < max_pos_rotation && currentRotation > max_neg_rotation )
-        //if (currentRotation < max_pos_rotation )
         {
-            //Debug.Log(current.GetName() + "_x: " + current.GetRotation().x);
-            //Debug.Log(current.GetName() + "_y: " + current.GetRotation().y);
-            //Debug.Log(current.GetName() + "_z: " + current.GetRotation().z);
-            current.Rotate(-angle * m_rate);
+            Text_Z_rotation_J0.text = "Lipa";
+            current.Rotate(-angle * m_rate);                                                          //wczesniej zrobiono ruch zeby sprawdzic czy nie przedobrzyl
+        }
+        //else
+        {
+            Text_Z_rotation_J0.text = "Jest git";
+            //current.Rotate(angle * m_rate);                                                             //jezeli przedobrzy to cofnij ruch
         }
     }
 

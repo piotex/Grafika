@@ -67,18 +67,15 @@ public class JointManager : MonoBehaviour
     void RotateJoint(ref Joint current, float angle)
     {
         current.Rotate(-angle * m_rate);
-        if (current.GetName()=="1" || current.GetName() == "2")
+        if (current.IsJoinIn_GOOD_Rotation())
         {
-            if (current.IsJoinIn_GOOD_Rotation())
-            {
-                Text_Z_rotation_J0.text = "Jest git";
-                //current.Rotate(-angle * m_rate);                                                          //wczesniej zrobiono ruch zeby sprawdzic czy nie przedobrzyl
-            }
-            else
-            {
-                Text_Z_rotation_J0.text = "Lipa";
-                current.Rotate(angle * m_rate);                                                             //jezeli przedobrzy to cofnij ruch
-            }
+            Text_Z_rotation_J0.text = "Jest git";
+            //current.Rotate(-angle * m_rate);                                                          //wczesniej zrobiono ruch zeby sprawdzic czy nie przedobrzyl
+        }
+        else
+        {
+            Text_Z_rotation_J0.text = "Lipa";
+            current.Rotate(angle * m_rate);                                                             //jezeli przedobrzy to cofnij ruch
         }
     }
 

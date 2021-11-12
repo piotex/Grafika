@@ -35,33 +35,39 @@ public class Joint : MonoBehaviour
     }
     public bool IsJoinIn_GOOD_Rotation()
     {
-        int max = 60;
-        int min = -60;
+        int critic = 80;
+
+        int max_1 = 60;
+        int min_1 = -60;
+        int max_2 = 60;
+        int min_2 = -60; 
+        
         switch (transform.name)
         {
             case "1":
-                max = 60+90;
-                min = -60+90;
-                return max > transform.localEulerAngles.z && transform.localEulerAngles.z > min;
+                max_1 = 90 + critic;
+                min_1 = 90 - critic;
+                return max_1 > transform.localEulerAngles.z && transform.localEulerAngles.z > min_1;
             case "2":
-                max = 60+90;
-                min = -60+90;
-                return max > transform.localEulerAngles.y && transform.localEulerAngles.y > min;
+                max_1 = 90 + critic;
+                min_1 = 90 - critic;
+                return max_1 > transform.localEulerAngles.y && transform.localEulerAngles.y > min_1;
             case "3":
-                max = 60;
-                min = -60;
-                //return max > transform.localEulerAngles.z && transform.localEulerAngles.z > min;
-                return true;
+                max_1 = 0 + critic;
+                min_1 = 0;
+                max_2 = 360 - 0;
+                min_2 = 360 - critic;
+                return (max_1 > transform.localEulerAngles.z && transform.localEulerAngles.z > min_1) || (max_2 > transform.localEulerAngles.z && transform.localEulerAngles.z > min_2);
             case "4":
-                max = 60;
-                min = -60;
-                //return max > transform.localEulerAngles.z && transform.localEulerAngles.z > min;
-                return true;
+                max_1 = 0 + critic;
+                min_1 = 0;
+                max_2 = 360 - 0;
+                min_2 = 360 - critic;
+                return (max_1 > transform.localEulerAngles.z && transform.localEulerAngles.z > min_1) || (max_2 > transform.localEulerAngles.z && transform.localEulerAngles.z > min_2);
             case "5":
-                max = 60;
-                min = -60;
-                //return max > transform.localEulerAngles.z && transform.localEulerAngles.z > min;
-                return true;
+                max_1 = 90 + critic;
+                min_1 = 90 - critic;
+                return max_1 > transform.localEulerAngles.z && transform.localEulerAngles.z > min_1;
             default:
                 //return max > transform.localEulerAngles.z && transform.localEulerAngles.z > min;
                 return true;

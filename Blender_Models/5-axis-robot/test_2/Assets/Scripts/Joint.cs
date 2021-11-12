@@ -30,7 +30,44 @@ public class Joint : MonoBehaviour
             default:
                 return transform.localEulerAngles.z;
         }
+        throw new System.Exception("Join-GetCriticAxisRotation");
         return 0;
+    }
+    public bool IsJoinIn_GOOD_Rotation()
+    {
+        int max = 60;
+        int min = -60;
+        switch (transform.name)
+        {
+            case "1":
+                max = 60+90;
+                min = -60+90;
+                return max > transform.localEulerAngles.z && transform.localEulerAngles.z > min;
+            case "2":
+                max = 60-90;
+                min = -60-90;
+                return max > transform.localEulerAngles.y && transform.localEulerAngles.y > min;
+            case "3":
+                max = 60;
+                min = -60;
+                //return max > transform.localEulerAngles.z && transform.localEulerAngles.z > min;
+                return true;
+            case "4":
+                max = 60;
+                min = -60;
+                //return max > transform.localEulerAngles.z && transform.localEulerAngles.z > min;
+                return true;
+            case "5":
+                max = 60;
+                min = -60;
+                //return max > transform.localEulerAngles.z && transform.localEulerAngles.z > min;
+                return true;
+            default:
+                //return max > transform.localEulerAngles.z && transform.localEulerAngles.z > min;
+                return true;
+        }
+        throw new System.Exception("Join-IsJoinInCriticRotation");
+        return true;
     }
     public string GetName()
     {

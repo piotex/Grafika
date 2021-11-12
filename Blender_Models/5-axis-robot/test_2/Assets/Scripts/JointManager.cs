@@ -27,7 +27,7 @@ public class JointManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < m_steps; i++)
+        //for (int i = 0; i < m_steps; i++)
         {
             if (GetDistance(m_end.transform.position, m_target.transform.position) > m_threshold)
             {
@@ -66,20 +66,19 @@ public class JointManager : MonoBehaviour
     }
     void RotateJoint(ref Joint current, float angle)
     {
-        float max_pos_rotation = 60;
-        float max_neg_rotation = -60;
-
-        //current.Rotate(-angle * m_rate);
-        float currentRotation = current.GetCriticAxisRotation();
-        //if (currentRotation < max_pos_rotation && currentRotation > max_neg_rotation )
+        current.Rotate(-angle * m_rate);
+        if (current.GetName()=="1" || current.GetName() == "2")
         {
-            Text_Z_rotation_J0.text = "Lipa";
-            current.Rotate(-angle * m_rate);                                                          //wczesniej zrobiono ruch zeby sprawdzic czy nie przedobrzyl
-        }
-        //else
-        {
-            Text_Z_rotation_J0.text = "Jest git";
-            //current.Rotate(angle * m_rate);                                                             //jezeli przedobrzy to cofnij ruch
+            if (current.IsJoinIn_GOOD_Rotation())
+            {
+                Text_Z_rotation_J0.text = "Jest git";
+                //current.Rotate(-angle * m_rate);                                                          //wczesniej zrobiono ruch zeby sprawdzic czy nie przedobrzyl
+            }
+            else
+            {
+                Text_Z_rotation_J0.text = "Lipa";
+                current.Rotate(angle * m_rate);                                                             //jezeli przedobrzy to cofnij ruch
+            }
         }
     }
 

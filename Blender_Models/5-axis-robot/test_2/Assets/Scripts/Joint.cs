@@ -44,8 +44,8 @@ public class Joint : MonoBehaviour
                 min = -60+90;
                 return max > transform.localEulerAngles.z && transform.localEulerAngles.z > min;
             case "2":
-                max = 60-90;
-                min = -60-90;
+                max = 60+90;
+                min = -60+90;
                 return max > transform.localEulerAngles.y && transform.localEulerAngles.y > min;
             case "3":
                 max = 60;

@@ -43,7 +43,7 @@ public class JointManager : MonoBehaviour
                             Text_Z_rotation_J1.text = "J" + current.GetName() + "-Z: " + current.transform.localEulerAngles.z.ToString("0.00");
                             break;
                         case "2":
-                            Text_Z_rotation_J2.text = "J" + current.GetName() + "-Y: -" + current.transform.localEulerAngles.y.ToString("0.00");
+                            Text_Z_rotation_J2.text = "J" + current.GetName() + "-Y: " + current.transform.localEulerAngles.y.ToString("0.00");
                             break;
                         case "3":
                             Text_Z_rotation_J3.text = "J" + current.GetName() + "-Z: " + current.transform.localEulerAngles.z.ToString("0.00");

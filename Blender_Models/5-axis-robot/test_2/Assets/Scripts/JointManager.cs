@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class JointManager : MonoBehaviour
 {
@@ -10,6 +11,13 @@ public class JointManager : MonoBehaviour
     public Joint m_root;
     public Joint m_end;
     public GameObject m_target;
+
+    public Text Text_Z_rotation_J0;
+    public Text Text_Z_rotation_J1;
+    public Text Text_Z_rotation_J2;
+    public Text Text_Z_rotation_J3;
+    public Text Text_Z_rotation_J4;
+    public Text Text_Z_rotation_J5;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +36,29 @@ public class JointManager : MonoBehaviour
                 {
                     float slope = CalculateSlope(current);
                     RotateJoint(ref current, slope);
+
+                    switch (current.GetName())
+                    {
+                        case "1":
+                            Text_Z_rotation_J1.text = "J" + current.GetName() + "-Z: " + current.transform.localEulerAngles.z.ToString("0.00");
+                            break;
+                        case "2":
+                            Text_Z_rotation_J2.text = "J" + current.GetName() + "-Y: " + current.transform.localEulerAngles.y.ToString("0.00");
+                            break;
+                        case "3":
+                            Text_Z_rotation_J3.text = "J" + current.GetName() + "-Y: " + current.transform.localEulerAngles.y.ToString("0.00");
+                            break;
+                        case "4":
+                            Text_Z_rotation_J4.text = "J" + current.GetName() + "-Y: " + current.transform.localEulerAngles.y.ToString("0.00");
+                            break;
+                        case "5":
+                            Text_Z_rotation_J5.text = "J" + current.GetName() + "-Y: " + current.transform.localEulerAngles.y.ToString("0.00");
+                            break;
+                        default:
+                            Text_Z_rotation_J0.text = "J" + current.GetName() + "-Y: " + current.transform.localEulerAngles.y.ToString("0.00");
+                            break;
+                    }
+
                     current = current.GetChild();
                 }
             }
@@ -42,9 +73,9 @@ public class JointManager : MonoBehaviour
         //if (currentRotation < max_pos_rotation && currentRotation > max_neg_rotation )
         //if (currentRotation < max_pos_rotation )
         {
-            Debug.Log(current.GetName() + "_x: " + current.GetRotation().x);
-            Debug.Log(current.GetName() + "_y: " + current.GetRotation().y);
-            Debug.Log(current.GetName() + "_z: " + current.GetRotation().z);
+            //Debug.Log(current.GetName() + "_x: " + current.GetRotation().x);
+            //Debug.Log(current.GetName() + "_y: " + current.GetRotation().y);
+            //Debug.Log(current.GetName() + "_z: " + current.GetRotation().z);
             current.Rotate(-angle * m_rate);
         }
     }

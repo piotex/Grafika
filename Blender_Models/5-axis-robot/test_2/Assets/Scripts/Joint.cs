@@ -11,7 +11,7 @@ public class Joint : MonoBehaviour
     }
     public void Rotate(float _angle)
     {
-        transform.Rotate(Vector3.up * _angle);
+        transform.Rotate(new Vector3(0,0,1) * _angle);
     }
     public Vector3 GetRotation()
     {

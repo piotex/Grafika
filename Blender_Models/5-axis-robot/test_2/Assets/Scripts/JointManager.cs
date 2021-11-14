@@ -7,7 +7,7 @@ public class JointManager : MonoBehaviour
 {
     public int m_steps = 20;
     public float m_rate = 10f;
-    public float m_threshold = 0.05f;
+    public float m_threshold = 0.1f;
     public Joint m_root;
     public Joint m_end;
     public GameObject m_target;
@@ -37,27 +37,7 @@ public class JointManager : MonoBehaviour
                     float slope = CalculateSlope(current);
                     RotateJoint(ref current, slope);
 
-                    switch (current.GetName())
-                    {
-                        case "1":
-                            Text_Z_rotation_J1.text = "J" + current.GetName() + "-Z: " + current.transform.localEulerAngles.z.ToString("0.00");
-                            break;
-                        case "2":
-                            Text_Z_rotation_J2.text = "J" + current.GetName() + "-Y: " + current.transform.localEulerAngles.y.ToString("0.00");
-                            break;
-                        case "3":
-                            Text_Z_rotation_J3.text = "J" + current.GetName() + "-Z: " + current.transform.localEulerAngles.z.ToString("0.00");
-                            break;
-                        case "4":
-                            Text_Z_rotation_J4.text = "J" + current.GetName() + "-Z: " + current.transform.localEulerAngles.z.ToString("0.00");
-                            break;
-                        case "5":
-                            Text_Z_rotation_J5.text = "J" + current.GetName() + "-Z: " + current.transform.localEulerAngles.z.ToString("0.00");
-                            break;
-                        default:
-                            Text_Z_rotation_J0.text = "J" + current.GetName() + "-Y: " + current.transform.localEulerAngles.y.ToString("0.00");
-                            break;
-                    }
+                    DisplayJointsRotation(current);
 
                     current = current.GetChild();
                 }
@@ -81,7 +61,7 @@ public class JointManager : MonoBehaviour
 
     float CalculateSlope(Joint _joint)
     {
-        float deltaTheta = 0.01f;
+        float deltaTheta = 0.1f;
         float distance1 = GetDistance(m_end.transform.position, m_target.transform.position);
         _joint.Rotate(deltaTheta);
 
@@ -93,5 +73,29 @@ public class JointManager : MonoBehaviour
     float GetDistance(Vector3 p1, Vector3 p2)
     {
         return Vector3.Distance(p1,p2);
+    }
+    void DisplayJointsRotation(Joint current)
+    {
+        switch (current.GetName())
+        {
+            case "1":
+                Text_Z_rotation_J1.text = "J" + current.GetName() + "-Z: " + current.GetCriticAxisRotation().ToString("0.00");
+                break;
+            case "2":
+                Text_Z_rotation_J2.text = "J" + current.GetName() + "-Y: " + current.GetCriticAxisRotation().ToString("0.00");
+                break;
+            case "3":
+                Text_Z_rotation_J3.text = "J" + current.GetName() + "-Z: " + current.GetCriticAxisRotation().ToString("0.00");
+                break;
+            case "4":
+                Text_Z_rotation_J4.text = "J" + current.GetName() + "-Z: " + current.GetCriticAxisRotation().ToString("0.00");
+                break;
+            case "5":
+                Text_Z_rotation_J5.text = "J" + current.GetName() + "-Z: " + current.GetCriticAxisRotation().ToString("0.00");
+                break;
+            default:
+                throw new System.Exception("JointManager - DisplayJointsRotation");
+                break;
+        }
     }
 }

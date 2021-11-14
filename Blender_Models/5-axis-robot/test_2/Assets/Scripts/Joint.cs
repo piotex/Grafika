@@ -45,8 +45,8 @@ public class Joint : MonoBehaviour
         switch (transform.name)
         {
             case "1":
-                max_1 = 90 + critic;
-                min_1 = 90 - critic;
+                max_1 = 270 + critic;
+                min_1 = 270 - critic;
                 return max_1 > transform.localEulerAngles.z && transform.localEulerAngles.z > min_1;
             case "2":
                 max_1 = 90 + critic;

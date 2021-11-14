@@ -59,6 +59,7 @@
     <Compile Include="Assets\Scripts\LogicXD.cs" />
     <Compile Include="Assets\Scripts\Joint.cs" />
     <Compile Include="Assets\Scripts\JointManager.cs" />
+    <Compile Include="Assets\Scripts\ButtonsManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

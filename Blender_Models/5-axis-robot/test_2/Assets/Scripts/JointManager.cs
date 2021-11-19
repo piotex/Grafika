@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class JointManager : MonoBehaviour
 {
     public int m_steps = 20;
-    public float m_rate = 10f;
-    public float m_threshold = 0.1f;
+    public float m_rate = 0.6f;
+    public float m_threshold = 0.001f;
+    public float m_theta = 0.001f;
     public Joint m_root;
     public Joint m_end;
     public GameObject m_target;
@@ -27,7 +28,7 @@ public class JointManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //for (int i = 0; i < m_steps; i++)
+        for (int i = 0; i < m_steps; i++)
         {
             if (GetDistance(m_end.transform.position, m_target.transform.position) > m_threshold)
             {
@@ -61,7 +62,7 @@ public class JointManager : MonoBehaviour
 
     float CalculateSlope(Joint _joint)
     {
-        float deltaTheta = 0.1f;
+        float deltaTheta = m_theta;
         float distance1 = GetDistance(m_end.transform.position, m_target.transform.position);
         _joint.Rotate(deltaTheta);
 

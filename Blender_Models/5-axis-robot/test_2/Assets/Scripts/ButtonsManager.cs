@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,37 +6,36 @@ using UnityEngine.UI;
 
 public class ButtonsManager : MonoBehaviour
 {
-    public bool Start = false;
-    public float Speed = 2;
+    private int index = 0;
+    private bool startCycle = false;
+    private GameObject tmp_sphere;
+
     public Joint EndEfector;
     public GameObject Target;
-    private int index = 0;
+
+    public Text ErrorTextPlace;
 
     public readonly List<Vector3> CyclePointList = new List<Vector3>()
     {
-        //new Vector3(6.6f, 17.05f, -8.8f),
-        //new Vector3(7.81f, 3.69f, -8.8f),
-        //new Vector3(7.81f, 13.07f, 7.16f),
-        //new Vector3(7.81f, 23.07f, 7.16f),
-
-        new Vector3(3.2f, 4.8f, 8.8f),
-        new Vector3(5.6f, 25.2f, 1.2f),
-        new Vector3(7.2f, 15.2f, -5.2f),
-        new Vector3(12.6f, 7.2f, -4.2f),
-
+        //new Vector3(3.2f, 4.8f, 8.8f),
+        //new Vector3(5.6f, 25.2f, 1.2f),
+        //new Vector3(7.2f, 15.2f, -5.2f),
+        //new Vector3(12.6f, 7.2f, -4.2f),
     };
 
+    private void Start()
+    {
+        tmp_sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+    }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Start)
+        if (startCycle)
         {
             SingleCycle();
         }
     
     }
-
 
     public void CycleStart()
     {
@@ -46,7 +46,7 @@ public class ButtonsManager : MonoBehaviour
         }
         Target.transform.position = CyclePointList[index];
 
-        Start = !Start;
+        startCycle = !startCycle;
     }
     public void SingleCycle()
     {
@@ -64,6 +64,61 @@ public class ButtonsManager : MonoBehaviour
                 index = 0;
             }
             Target.transform.position = CyclePointList[index];
+        }
+    }
+
+    public void AddPoint()
+    {
+        int x = 1;
+    }
+    public void PointTextbox_ValueChanged(String _text)
+    {
+        /*
+        float x = 0;
+        float y = 0;
+        float z = 0;
+
+        int tmp_index = 0;
+        string tmp = "";
+        for (int i = 0; i < text.Length; i++)
+        {
+            if (';' == text[i])
+            {
+                if (tmp_index == 2)
+                {
+                    z = float.Parse(tmp.Trim());
+                    tmp_index++;
+                    tmp = "";
+                }
+                if (tmp_index == 1)
+                {
+                    y = float.Parse(tmp.Trim());
+                    tmp_index++;
+                    tmp = "";
+                }
+                if (tmp_index == 0)
+                {
+                    x = float.Parse(tmp.Trim());
+                    tmp_index++;
+                    tmp = "";
+                }
+            }
+            else
+            {
+                tmp += text[i];
+            }
+        }
+
+        tmp_sphere.transform.position = new Vector3(x,y,z);
+        */
+
+        if (_text != null && _text != "")
+        {
+            ErrorTextPlace.text = _text;
+        }
+        else
+        {
+            ErrorTextPlace.text = "lipa";
         }
     }
 }

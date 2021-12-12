@@ -7,7 +7,7 @@ public class JointManager : MonoBehaviour
 {
     public int m_steps = 20;
     public float m_rate = 0.6f;
-    public float m_threshold = 0.001f;
+    public float m_threshold = 0.05f;
     public float m_theta = 0.001f;
     public Joint m_root;
     public Joint m_end;
@@ -50,12 +50,9 @@ public class JointManager : MonoBehaviour
         current.Rotate(-angle * m_rate);
         if (current.IsJoinIn_GOOD_Rotation())
         {
-            Text_Z_rotation_J0.text = "Jest git";
-            //current.Rotate(-angle * m_rate);                                                          //wczesniej zrobiono ruch zeby sprawdzic czy nie przedobrzyl
         }
         else
         {
-            Text_Z_rotation_J0.text = "Lipa";
             current.Rotate(angle * m_rate);                                                             //jezeli przedobrzy to cofnij ruch
         }
     }

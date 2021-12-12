@@ -18,15 +18,15 @@ public class Joint : MonoBehaviour
         switch (transform.name)
         {
             case "1":
-                return transform.localEulerAngles.z;
+                return 180 - (transform.localEulerAngles.z -180);    //-180 zeby katy w arduino sie zgadzaly
             case "2":
-                return transform.localEulerAngles.y;
+                return (-transform.localEulerAngles.y) +180;    //+180 zeby katy w arduino sie zgadzaly
             case "3":
-                return transform.localEulerAngles.z;
+                return transform.localEulerAngles.z +90;    //+90 zeby katy w arduino sie zgadzaly
             case "4":
-                return transform.localEulerAngles.z;
+                return transform.localEulerAngles.z +90;    //+90 zeby katy w arduino sie zgadzaly
             case "5":
-                return transform.localEulerAngles.z;
+                return transform.localEulerAngles.z ;
             default:
                 return transform.localEulerAngles.z;
         }
